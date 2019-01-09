@@ -10,21 +10,24 @@ const getInputArray = () => {
 
 const input = getInputArray();
 
-const foundFreq = (list, newFreq) => list.includes(newFreq);
+getDuplicatedFrequency = (input) => {
+  let freqHash = {};
+  let duplicateFrequency;
+  let index = 0;
+  let freq = 0;
+  let number;
 
-const getItem = (a) => {
-    let sum = parseInt(a[0]) + parseInt(a[1]);
-    let freq = [];
-    let index = 2;
-
-    while(!foundFreq(freq, sum)) {
-      freq.push(sum);
-      sum += parseInt(a[index]);
-      index < a.length - 1
-        ? index++
-        : index = 0;
+while (!duplicateFrequency) {
+    let number = parseInt(input[index])
+    if (freqHash[freq]) {
+        duplicateFrequency = freq;
+     } else {
+        freqHash[freq] = 1;
+        freq += number;
     }
-	return sum;
+    if (index < input.length - 1) { index++; } else { index = 0; }
+  }
+  return duplicateFrequency;
 }
 
-getItem(input);
+getDuplicatedFrequency(input);
